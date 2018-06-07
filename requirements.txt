@@ -1,0 +1,9 @@
+basemap==1.0.7
+beautifulsoup4==4.6.0
+discogs-client==2.2.1
+lxml==4.1.1
+matplotlib==2.1.2
+pylast==2.1.0
+pytest==3.4.1
+requests==2.18.4
+wikipedia==1.4.0
