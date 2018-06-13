@@ -15,11 +15,14 @@ def main(argv):
     for opt, arg in opts:
         if opt in ('-h', '--help'):
             print(help_string)
-            sys.exit()
+            sys.exit(0)
         elif opt in ("-u", "--username"):
             username = arg
         elif opt in ("-l", "--limit"):
             limit = arg
+        else:
+            print(help_string)
+            sys.exit(0)
     return drawer.draw_countries(getter.get_countries(username, limit), username)
 
 

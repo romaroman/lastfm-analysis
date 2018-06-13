@@ -36,9 +36,9 @@ def summary_parser(text):
     return None if len(country_occur) == 0 else max(country_occur, key=lambda i: country_occur[i])
 
 
-# This function implements clearing the disambiguation of country name
+# This function implements clearing the disambiguation of country's name
 # I guess it's not necessarily to explain it, because code is merely simple
-def normalize_country(coun):
+def normalize_country(country):
     norm_dict = {
         'U.S.': 'United States of America',
         'US': 'United States of America',
@@ -52,9 +52,9 @@ def normalize_country(coun):
         'England': 'United Kingdom',
         'Northern Ireland': 'United Kingdom',
     }
-    if coun in norm_dict.keys():
-        return norm_dict[coun]
-    return coun
+    if country in norm_dict.keys():
+        return norm_dict[country]
+    return country
 
 
 def wikipedia_getter(artist):
@@ -72,7 +72,7 @@ def wikipedia_getter(artist):
         possible_variants = ['band', 'singer', 'songwriter', 'compositor', 'musician', 'artist', 'performer']
         soup = None
         # It will try to search for artist's wiki page until every variant in previous list will be checked out
-        # (may take long time, you can shorten list)
+        # (that may take long time, you can shorten list)
         for var in possible_variants:
             page = None
             t_artist = artist + ' ({})'.format(var)
