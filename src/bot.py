@@ -1,9 +1,9 @@
 import logging
 import requests
-import lastfm
+from src import lastfm
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from secret import TELEGRAM_TOKEN, LAST_FM_API_KEY
+from src.secret import TELEGRAM_TOKEN, LAST_FM_API_KEY
 
 
 def start(bot, update):

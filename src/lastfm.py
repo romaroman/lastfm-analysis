@@ -1,12 +1,13 @@
-import drawer
-import sys
 import getopt
+import sys
+
+import drawer
 import getter
 
 
 def main(argv):
     username, limit = '', None
-    help_string = 'main.py -u <username> -l <limit>'
+    help_string = 'analyze -u <username> -l <limit>'
     try:
         opts, args = getopt.getopt(argv, "hu:l:", ["username=", "limit="])
     except getopt.GetoptError:
@@ -19,7 +20,10 @@ def main(argv):
         elif opt in ("-u", "--username"):
             username = arg
         elif opt in ("-l", "--limit"):
-            limit = arg
+            if limit is None or type(limit) != int:
+                limit = 20
+            else:
+                limit = arg
         else:
             print(help_string)
             sys.exit(0)

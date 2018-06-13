@@ -1,5 +1,5 @@
-import pytest
+import unittest
 
 
-class TestSampleMap(pytest.Class):
+class TestSampleMap(unittest.TestCase):
     pass

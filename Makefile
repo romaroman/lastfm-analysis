@@ -1,5 +1,20 @@
+analyze:
+	python src/lastfm.py
+
 clear_results:
-	rm -f dumps/* && rm -f maps/*
+	rm -r dumps/* && rm -r maps/*
+
+clear_cache:
+	rm -r .pytest_cache && find . -name "*.pyc" -exec rm -f {} \
 
 sample:
-	ancpy main.py -u hey_canada -l 5
+	python src/lastfm.py -u username -l 20
+
+install_reqs:
+	python -m pip install -r requirements.txt
+
+start_bot:
+	python src/bot.py
+
+build_image:
+	docker build -t lastfm_analysis .

@@ -2,7 +2,7 @@
 .idea/
 
 # Debug files
-secret.py
+src/secret.py
 dumps/
 maps/
 

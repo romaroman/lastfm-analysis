@@ -62,20 +62,5 @@ def draw_countries(countries, user):
 
 
 if __name__ == '__main__':
-    # countries = {
-    #     'Russia': 4,
-    #     'United States of America': 7,
-    #     'Sweden': 6,
-    #     'Australia': 1,
-    #     'China': 3,
-    #     'India': 8,
-    #     'Germany': 7,
-    #     'England': 9,
-    #     'Poland': 4,
-    #     'Egypt': 6,
-    #     'Turkey': 1,
-    #     'Canada': 2,
-    # }
-    # draw_countries(countries, 'me')
     extract_countries()
     pass

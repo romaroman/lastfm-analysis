@@ -172,17 +172,18 @@ def discogs_getter(artist):
     return art
 
 
-def dump_data(countries, username, total_scr, uncounted):
+def dump_data(countries, username, limit, total_scr, uncounted):
     data = {
         'countries': countries,
         'username': username,
+        'limit': limit,
         'analysis_date': ANALYSIS_DATE,
         'total_scrobbles': total_scr,
         'total_countries': len(countries),
         'uncounted_amount': uncounted,
         'uncounted_percentage': int(uncounted / len(countries) * 100)
     }
-    filename = r'dumps/dump_{}_{}.dat'.format(username, str(ANALYSIS_DATE.time())[:8])
+    filename = r'dumps/{}_{}_{}.dat'.format(username, limit, str(ANALYSIS_DATE.time())[:8])
     with open(filename, 'wb+') as file:
         pickle.dump(data, file)
         file.close()
@@ -190,16 +191,11 @@ def dump_data(countries, username, total_scr, uncounted):
 
 def get_countries(name, lim):
     try:
-        print(LAST_FM_API_KEY)
         net = pyl.LastFMNetwork(api_key=LAST_FM_API_KEY, username=name)
-        print(net.username)
         user = net.get_user(username=net.username)
-        print(user.name)
         top = user.get_top_artists(limit=lim)
-        print(top)
 
     except pyl.WSError:
-        print('not')
         sys.exit('User with {} username not found'.format(name))
 
     countries = dict()
@@ -232,12 +228,7 @@ def get_countries(name, lim):
         exit(2)
 
     if len(top) >= 5:
-        dump_data(countries, name, sum(countries.values()), uncounted)
-        # with open('dumps/dump_' + username + '_' + str(datetime.now().time())[:8] + '.json', 'w+') as backup:
-        #
-        #     backup.write(str(countries))
-        #     backup.write('\n{} not recognized artists\n It\'s {}% of total amount'
-        #                  .format(uncounted, int(uncounted * 100 / len(top))))
+        dump_data(countries, name, lim, sum(countries.values()), uncounted)
     return countries
 
 
