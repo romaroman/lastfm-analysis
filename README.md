@@ -38,7 +38,7 @@ I've provided multiple solutions for installation:
 
 Where `<username>` is Last.fm username and strictly required 
 and `<limit>` is amount of top artists to be extracted from library.
-`<limit>` can be omitted, default value is 20
+`<limit>` can be omitted, default value is 20 artists
 
 ## src/secret.py
 
