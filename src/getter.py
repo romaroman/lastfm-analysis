@@ -69,9 +69,12 @@ def wikipedia_getter(artist):
         # If wiki cannot identify page correctly (possible other meanings like Drake)
         # Then script tries to search for something like Drake (band) or Drake (singer) etc.
         # This list is extendable and may be edited without serious consequences
-        possible_variants = ['band', 'singer', 'songwriter', 'compositor', 'musician', 'artist', 'performer']
+        possible_variants = [
+            'band', 'singer', 'songwriter', 'compositor', 'musician', 'artist', 'performer'
+        ]
         soup = None
-        # It will try to search for artist's wiki page until every variant in previous list will be checked out
+        # It will try to search for artist's wiki page
+        # until every variant in previous list will be checked out
         # (that may take long time, you can shorten list)
         for var in possible_variants:
             page = None
@@ -96,7 +99,8 @@ def wikipedia_getter(artist):
     # So script tries to look for it in extracted 'soup'
     info_table = soup.find("table", {"class": "infobox"})
     if info_table:
-        # In some cases artist's home is noted with specific tags, so next lines try to guess which variant is correct
+        # In some cases artist's home is noted with specific tags
+        # so next lines try to guess which variant is correct
         origin = info_table.find("span", {"class": "birthplace"})
         if not origin:
             try:
@@ -169,6 +173,7 @@ def factbox_parser(jd):  # jd variable is data in json format =)
 def discogs_getter(artist):
     dcl = disc_cli.Client('Last.fm location retriever', user_token=DISCOGS_API_KEY)
     art = dcl.search(artist, type='artist')
+
     return art
 
 
