@@ -20,10 +20,10 @@ def main(argv):
         elif opt in ("-u", "--username"):
             username = arg
         elif opt in ("-l", "--limit"):
-            if limit is None or type(limit) != int:
-                limit = 20
-            else:
-                limit = arg
+            # if limit is None:  # or type(limit) != int:
+            #     limit = 20
+            # else:
+            limit = arg
         else:
             print(help_string)
             sys.exit(0)
