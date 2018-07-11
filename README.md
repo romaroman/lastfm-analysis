@@ -40,11 +40,9 @@ Where `<username>` is Last.fm username and strictly required
 and `<limit>` is amount of top artists to be extracted from library.
 `<limit>` can be omitted, default value is 20 artists
 
-## src/secret.py
+## secrets.json
 
-Imported API keys in source files are stored in ignored secret.py file.
-(Yes, I know that it's better approach to create some .env file for this purpose, 
-but I'm lazy to reimplement that)
+By default script tries to parse tokens from file named as `secrets.json`, you should create in on your own from `secrets.json.scrap`.
 You can ask me via mail for API keys or use own ones.
 
 ## License
