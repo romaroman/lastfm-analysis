@@ -4,14 +4,11 @@ import re
 import requests
 import discogs_client as disc_cli
 import sys
-import pickle
-# import transliterate
 
 from drawer import extract_countries
 from datetime import datetime
 from collections import defaultdict
 from bs4 import BeautifulSoup
-from secret import LAST_FM_API_KEY, DISCOGS_API_KEY  # this line imports my api keys, change them to yours own
 
 MUSIC_BRAINZ_URL = 'https://musicbrainz.org/ws/2/artist/{}?fmt=json'
 LAST_FM_URL = 'https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist={}&api_key={}&format=json'
@@ -175,23 +172,6 @@ def discogs_getter(artist):
     art = dcl.search(artist, type='artist')
 
     return art
-
-
-def dump_data(countries, username, limit, total_scr, uncounted):
-    data = {
-        'countries': countries,
-        'username': username,
-        'limit': limit,
-        'analysis_date': ANALYSIS_DATE,
-        'total_scrobbles': total_scr,
-        'total_countries': len(countries),
-        'uncounted_amount': uncounted,
-        'uncounted_percentage': int(uncounted / len(countries) * 100)
-    }
-    filename = r'dumps/{}_{}_{}.dat'.format(username, limit, str(ANALYSIS_DATE.time())[:8])
-    with open(filename, 'wb+') as file:
-        pickle.dump(data, file)
-        file.close()
 
 
 def get_countries(name, lim):

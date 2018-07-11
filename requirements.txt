@@ -7,4 +7,4 @@ pytest==3.4.1
 requests==2.18.4
 wikipedia==1.4.0
 pyshp==1.2.12
-basemap==1.1.0
+#basemap==1.1.0
