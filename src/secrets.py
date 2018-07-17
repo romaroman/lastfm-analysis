@@ -12,7 +12,7 @@ def extract():
         print('Check whether secrets.json file exists')
         sys.exit(2)
 
-
+e
 
 if __name__ == '__main__':
     print(extract())
